@@ -41,10 +41,10 @@ namespace CompanyEmployees
             {
                 app.UseDeveloperExceptionPage();
             }
-            //else
-            //{
-            //    app.UseHsts();
-            //} 
+            else
+            {
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection();
 
