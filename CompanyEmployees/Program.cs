@@ -11,7 +11,7 @@ namespace CompanyEmployees
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args) //sets the default files and variables for the project and logger configuration.
+            Host.CreateDefaultBuilder(args) //set the default files and variables for the project and logger configuration.
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

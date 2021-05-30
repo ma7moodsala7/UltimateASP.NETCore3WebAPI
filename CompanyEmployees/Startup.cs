@@ -1,3 +1,4 @@
+using System.IO;
 using CompanyEmployees.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NLog;
 
 namespace CompanyEmployees
 {
@@ -12,6 +14,9 @@ namespace CompanyEmployees
     {
         public Startup(IConfiguration configuration)
         {
+            //Setting up the configuration for a logger service
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+
             Configuration = configuration;
         }
 
@@ -24,6 +29,7 @@ namespace CompanyEmployees
         {
             services.ConfigureCors(); 
             services.ConfigureIISIntegration();
+            services.ConfigureLoggerService();
 
 
             // instead of AddMvc() as used in 2.2, now we have AddControllers().

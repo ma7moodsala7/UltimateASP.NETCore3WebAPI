@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Contracts;
+using LoggerService;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CompanyEmployees.Extensions
@@ -46,6 +48,14 @@ namespace CompanyEmployees.Extensions
         }
 
 
+        /// <summary>
+        /// Add the logger service inside the .NET Core’s IOC container
+        /// </summary>
+        /// <param name="services"></param>
+        public static void ConfigureLoggerService(this IServiceCollection services)
+        {
+            services.AddScoped<ILoggerManager, LoggerManager>();
+        }
 
 
     }
